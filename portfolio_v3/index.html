@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="progress"></div>
+    <header class="nav">
+      <a class="logo" href="#home"><i id="ini"></i><span id="sh"></span></a>
+      <nav id="links"></nav>
+      <button id="menu" aria-label="Menu">☰</button><button id="theme" aria-label="Toggle theme">🌙</button
+      ><a class="btn" href="#contact">Let's talk</a>
+    </header>
+    <main>
+      <section id="home" class="hero">
+        <div class="hl">
+          <span class="open"><i></i>Open to work</span>
+          <h1 id="hname"></h1>
+          <p class="role mono"><u></u><span id="r1"></span> <b id="r2"></b></p>
+          <p id="intro" class="lead"></p>
+          <div class="cta">
+            <a class="btn" href="#projects">View my work ↗</a
+            ><a class="btn ghost" href="#contact">Get in touch ✉</a
+            ><a class="btn ghost" id="cv" href="#">View CV ▤</a>
+          </div>
+          <div class="stats" id="stats"></div>
+        </div>
+        <div class="hr">
+          <div class="arch"><img id="photo" alt="Profile" /></div>
+          <div class="orbit" id="orbit"></div>
+          <div class="loc"><b id="loc"></b><small id="mode"></small></div>
+        </div>
+      </section>
+      <div class="band"><div class="track" id="marquee"></div></div>
+      <section id="about">
+        <p class="eyebrow mono">About</p>
+        <h2 id="abT"></h2>
+        <div class="grid2">
+          <div class="card" id="abCard"></div>
+          <div class="side" id="abSide"></div>
+        </div>
+        <div class="card now">
+          <div class="lanyard" id="lany">
+            <svg id="rope"><path /></svg>
+            <div class="idc" id="idc"></div>
+          </div>
+          <div class="nowl">
+            <p class="eyebrow mono">Right now</p>
+            <div id="nowList"></div>
+          </div>
+        </div>
+      </section>
+      <section id="skills">
+        <p class="eyebrow mono">Skills</p>
+        <h2>A toolkit built by <span class="hi">doing</span></h2>
+        <p class="sub">Every tool below has shipped in a real project.</p>
+        <div class="tabs" id="tabs"></div>
+        <div class="skills" id="skillGrid"></div>
+      </section>
+      <section id="experience">
+        <p class="eyebrow mono">Experience</p>
+        <h2>Where I've put the work <span class="hi">to use</span></h2>
+        <div class="timeline" id="exp"></div>
+      </section>
+      <section id="projects">
+        <p class="eyebrow mono">Projects</p>
+        <h2>Selected builds, <span class="hi">start to finish</span></h2>
+        <div class="pgrid" id="proj"></div>
+      </section>
+      <section id="education">
+        <p class="eyebrow mono">Education</p>
+        <h2>The <span class="hi">foundation</span> behind the work</h2>
+        <div class="grid2e" id="edu"></div>
+        <div class="grid2e" id="certs"></div>
+      </section>
+      <section id="contact">
+        <div class="cbox">
+          <div>
+            <p class="eyebrow mono">Contact</p>
+            <h2>
+              Let's build something <span class="hi2">worth shipping.</span>
+            </h2>
+            <p class="lead2">
+              Open to internships and junior roles. I usually reply within 24
+              hours.
+            </p>
+            <div id="cl"></div>
+          </div>
+          <form id="form" class="form">
+            <label>Name<input required placeholder="Your name" /></label
+            ><label
+              >Email<input
+                type="email"
+                required
+                placeholder="your@email.com" /></label
+            ><label
+              >Subject<input
+                name="s"
+                placeholder="Internship opportunity..." /></label
+            ><label
+              >Message<textarea
+                name="m"
+                rows="4"
+                placeholder="Tell me a bit about what you're building..."
+              ></textarea></label
+            ><button class="btn">Send message ➤</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <button id="top" aria-label="Back to top">↑</button>
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
