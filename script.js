@@ -4,6 +4,57 @@ const $$ = (selector) => document.querySelectorAll(selector);
 const D = DATA; // all content comes from data.js
 const iconUrl = (name) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${name}/${name}-original.svg`;
 
+function setupPreloader() {
+  const preloader = $('#preloader');
+  const progressText = $('#preloader-progress');
+  if (!preloader || !progressText) return;
+
+  let progress = 0;
+  let done = false;
+
+  const updateProgress = (value) => {
+    progress = Math.min(100, Math.max(0, value));
+    progressText.textContent = `${Math.round(progress)}%`;
+  };
+
+  const finish = () => {
+    if (done) return;
+    done = true;
+    updateProgress(100);
+    setTimeout(() => {
+      preloader.classList.add('hidden');
+      document.body.classList.remove('is-loading');
+      document.body.classList.add('loaded');
+    }, 650);
+  };
+
+  const timer = setInterval(() => {
+    if (done) return;
+    progress += Math.random() * 18 + 10;
+    if (progress >= 96) {
+      progress = 96;
+      updateProgress(progress);
+      clearInterval(timer);
+      return;
+    }
+    updateProgress(progress);
+  }, 160);
+
+  const heroImage = new Image();
+  heroImage.src = D.photo;
+  heroImage.onload = finish;
+  heroImage.onerror = finish;
+
+  if (heroImage.complete) {
+    finish();
+  }
+
+  window.addEventListener('load', () => {
+    clearInterval(timer);
+    finish();
+  }, { once: true });
+}
+
 // ============ NAVBAR ============
 // Logo text + menu links
 function renderNavbar() {
@@ -328,6 +379,7 @@ function setupMenu() {
 }
 
 // ============ START ============
+setupPreloader();
 renderNavbar();
 setupMenu();
 setupCvPreview();

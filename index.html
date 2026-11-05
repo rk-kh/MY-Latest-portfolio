@@ -11,7 +11,19 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="is-loading">
+    <div class="preloader" id="preloader" aria-live="polite" aria-label="Loading portfolio">
+      <div class="preloader__core">
+        <div class="preloader__pulse"></div>
+        <div class="preloader__ring"></div>
+        <div class="preloader__ring preloader__ring--two"></div>
+        <div class="preloader__logo">MR</div>
+        <div class="preloader__text">
+          <span>Loading experience</span>
+          <strong id="preloader-progress">0%</strong>
+        </div>
+      </div>
+    </div>
     <div id="progress"></div>
     <header class="nav">
       <a class="logo" href="#home"><i id="ini"></i><span id="sh"></span></a>
