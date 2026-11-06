@@ -10,7 +10,8 @@ function setupPreloader() {
   if (!preloader || !progressText) return;
 
   let progress = 0;
-  let done = false;
+  const duration = 1600;
+  const start = performance.now();
 
   const updateProgress = (value) => {
     progress = Math.min(100, Math.max(0, value));
@@ -18,41 +19,29 @@ function setupPreloader() {
   };
 
   const finish = () => {
-    if (done) return;
-    done = true;
+    if (preloader.dataset.closed === 'true') return;
+    preloader.dataset.closed = 'true';
     updateProgress(100);
     setTimeout(() => {
       preloader.classList.add('hidden');
       document.body.classList.remove('is-loading');
       document.body.classList.add('loaded');
-    }, 650);
+    }, 500);
   };
 
-  const timer = setInterval(() => {
-    if (done) return;
-    progress += Math.random() * 18 + 10;
-    if (progress >= 96) {
-      progress = 96;
-      updateProgress(progress);
-      clearInterval(timer);
-      return;
+  const tick = (now) => {
+    const elapsed = now - start;
+    const eased = Math.min(100, (elapsed / duration) * 100);
+    updateProgress(eased);
+
+    if (eased < 100) {
+      requestAnimationFrame(tick);
+    } else {
+      finish();
     }
-    updateProgress(progress);
-  }, 160);
+  };
 
-  const heroImage = new Image();
-  heroImage.src = D.photo;
-  heroImage.onload = finish;
-  heroImage.onerror = finish;
-
-  if (heroImage.complete) {
-    finish();
-  }
-
-  window.addEventListener('load', () => {
-    clearInterval(timer);
-    finish();
-  }, { once: true });
+  requestAnimationFrame(tick);
 }
 
 // ============ NAVBAR ============
